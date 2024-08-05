@@ -1,5 +1,5 @@
 # Python-Reactor-Sims
-A super nuanced nuclear reactor simulator which is very unrealistic and is very much still a work in progress.
+A super nuanced nuclear reactor simulator that is very unrealistic and is very much still a work in progress.
 
 
 There are 2 variations that are currently available:
@@ -24,7 +24,13 @@ The PyPWR_MCR.py file is my attempt to upgrade the original PyPWR file into a GU
 ### Still to Go
 - quite literally everything to do with actual mechanics
   - home display screen
-    - 
+    - Reactivity (∆K/K)
+    - Control rod insertion
+    - Temp
+    - Reactor water fill level
+    - Reactor pressure
   - Switchboard
+    - Feed water Pumps 1/2 
+    - 
   - electronic breaker board
   - control rod selection board
