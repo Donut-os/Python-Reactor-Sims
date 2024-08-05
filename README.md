@@ -22,3 +22,9 @@ The PyPWR_MCR.py file is my attempt to upgrade the original PyPWR file into a GU
 -  Title/start page
 
 ### Still to Go
+- quite literally everything to do with actual mechanics
+  - home display screen
+    - 
+  - Switchboard
+  - electronic breaker board
+  - control rod selection board
