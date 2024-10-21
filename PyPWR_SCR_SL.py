@@ -1118,7 +1118,7 @@ def MCR_mode():
             find_water_level()
             check_switches(RPV_Water_Level)
             Check_E_Switches()
-            Alert_Pop_E("Test")
+            #Alert_Pop_E("Test")
             print(Fore.WHITE + "---MCR SL Control Room---")
             print("")
             if MP == False:
