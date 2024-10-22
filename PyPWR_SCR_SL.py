@@ -587,6 +587,10 @@ def MCR_mode():
     SCRAM = False
     ARP = True
 
+    Low_WL = False
+    High_WL = False
+    High_Press = False
+    Low_Press = False
 
     def Engineering_handbook():
         print("-------- Engineering handbook -------")
@@ -1062,7 +1066,25 @@ def MCR_mode():
 
 
     def Alert_List():
-        pass
+        print("Alert List:")
+        if Low_WL == True:
+            print(Fore.RED + "Low Water Level")
+        else: 
+            print("")
+        if High_WL == True:
+            print(Fore.RED + "High Water Level")
+        else: 
+            print("")
+        if Low_Press == True:
+            print(Fore.RED + "Low Steam Pressure")
+        else: 
+            print("")
+        if High_Press == True:
+            print(Fore.RED + "High Steam Pressure")
+        else: 
+            print("")
+
+        input("Press Enter To Exit")
 
     def Check_params():
         pass
@@ -1141,7 +1163,7 @@ def MCR_mode():
             if MP == False:
                     print("")
             elif MP == True:
-                for i in range(6):
+                for i in range(8):
                     print("")
 
                 if DC == "o":
