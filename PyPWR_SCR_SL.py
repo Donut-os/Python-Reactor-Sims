@@ -545,6 +545,10 @@ def MCR_mode():
     global CR_2_2
     global CR_4_2
     global CR_4_4
+    global CR_2_4_P
+    global CR_2_2_P
+    global CR_4_2_P
+    global CR_4_4_P
     global SG
     global RPV_Temp_Sub
     global RPV_Press
@@ -564,10 +568,14 @@ def MCR_mode():
     global SCRAM
     global ARP
     global Alert_Pop
-    CR_2_4 = 0
-    CR_2_2 = 0
-    CR_4_2 = 0
-    CR_4_4 = 0
+    CR_2_4 = -50
+    CR_2_2 = -50
+    CR_4_2 = -50
+    CR_4_4 = -50
+    CR_2_4_P = 0
+    CR_2_2_P = 0
+    CR_4_2_P = 0
+    CR_4_4_P = 0
     SG = 0
     CR_G = "N/A"
     RPV_Temp = 23.00
@@ -1020,12 +1028,14 @@ def MCR_mode():
             RPV_Temp_Pos_Neg = "+"
         elif RPV_Temp_PN < 0:
             str(RPV_Temp_PN)
-            RPV_Temp_Pos_Neg = "-"
+            RPV_Temp_Pos_Neg = ""
         elif RPV_Temp_PN == 0:
             RPV_Temp_Pos_Neg = "*****"
         RPV_Temp = RPV_Temp + R_div1000
         RPV_Temp = RPV_Temp - RPV_Temp_Sub
         RPV_Temp = round(RPV_Temp, 2)
+        if RPV_Temp <= 20.50:
+            RPV_Temp = 20.50
 
 
     def find_press(RPV_Temp):
@@ -1054,13 +1064,13 @@ def MCR_mode():
 
     def Print_CRW(CR_G):
         if CR_G == "2-4":
-            print("Control rod withdrawal: ",CR_2_4, "%" )
+            print("Control rod withdrawal: ",CR_2_4_P, "%" )
         elif CR_G == "4-2":
-            print("Control rod withdrawal: ",CR_4_2, "%" )
+            print("Control rod withdrawal: ",CR_4_2_P, "%" )
         elif CR_G == "2-2":
-            print("Control rod withdrawal: ",CR_2_2, "%" )
+            print("Control rod withdrawal: ",CR_2_2_P, "%" )
         elif CR_G == "4-4":
-            print("Control rod withdrawal: ",CR_4_4, "%" )
+            print("Control rod withdrawal: ",CR_4_4_P, "%" )
         elif CR_G == "N/A":
             print("Not applicable")
 
@@ -1125,6 +1135,10 @@ def MCR_mode():
         global CR_4_2
         global CR_2_2
         global CR_4_4
+        global CR_2_4_P
+        global CR_4_2_P
+        global CR_2_2_P
+        global CR_4_4_P
         global RPV_Temp
         global RPV_Press
         global MP
@@ -1168,58 +1182,66 @@ def MCR_mode():
 
                 if DC == "o":
                     if CR_G == "2-4":
-                        if CR_2_4 == 100:
+                        if CR_2_4_P == 100:
                             print(Fore.RED + "Control rod withdrawal block")
                             time.sleep(1.5)
                         else:
-                            CR_2_4 = CR_2_4 + 10
+                            CR_2_4_P = CR_2_4_P + 10
+                            CR_2_4 = CR_2_4 + 15
                     elif CR_G == "2-2":
-                        if CR_2_2 == 100:
+                        if CR_2_2_P == 100:
                             print(Fore.RED + "Control rod withdrawal block")
                             time.sleep(1.5)
                         else:
-                            CR_2_2 = CR_2_2 + 10
+                            CR_2_2_P = CR_2_2_P + 10
+                            CR_2_2 = CR_2_2 + 15
                     elif CR_G == "4-2":
-                        if CR_4_2 == 100:
+                        if CR_4_2_P == 100:
                             print(Fore.RED + "Control rod withdrawal block")
                             time.sleep(1.5)
                         else:
-                            CR_4_2 = CR_4_2 + 10
+                            CR_4_2_P = CR_4_2_P + 10
+                            CR_4_2 = CR_4_2 + 15
                     elif CR_G == "4-4":
-                        if CR_4_4 == 100:
+                        if CR_4_4_P == 100:
                             print(Fore.RED + "Control rod withdrawal block")
                             time.sleep(1.5)
                         else:
-                            CR_4_4 = CR_4_4 + 10
+                            CR_4_4_P = CR_4_4_P + 10
+                            CR_4_4 = CR_4_4 + 15
                     else:
                         print(Fore.RED + "No Control Group Selected")
                         time.sleep(1.5)
 
                 elif DC == "i":
                     if CR_G == "2-4":
-                        if CR_2_4 == 0:
+                        if CR_2_4_P == 0:
                             print(Fore.RED + "Control rod insertion block")
                             time.sleep(2.5)
                         else:
-                            CR_2_4 = CR_2_4 - 10
+                            CR_2_4_P = CR_2_4_P - 10
+                            CR_2_4 = CR_2_4 - 15
                     elif CR_G == "2-2":
-                        if CR_2_2 == 0:
+                        if CR_2_2_P == 0:
                             print(Fore.RED + "Control rod insertion block")
                             time.sleep(2.5)
                         else:
-                            CR_2_2 = CR_2_2 - 10
-                    elif CR_G == "2-4":
-                        if CR_2_4 == 0:
+                            CR_2_2_P = CR_2_2_P - 10
+                            CR_2_2 = CR_2_2 - 15
+                    elif CR_G == "4-2":
+                        if CR_2_4_P == 0:
                             print(Fore.RED + "Control rod insertion block")
                             time.sleep(2.5)
                         else:
-                            CR_2_4 = CR_2_4 - 10
+                            CR_4_2_P = CR_4_2_P - 10
+                            CR_4_2 = CR_4_2 - 15
                     elif CR_G == "4-4":
                         if CR_4_4 == 0:
                             print(Fore.RED + "Control rod insertion block")
                             time.sleep(2.5)
                         else:
-                            CR_4_4 = CR_4_4 - 10
+                            CR_4_4_P = CR_4_4_P - 10
+                            CR_4_4 = CR_4_4 - 15
                     else:
                         print(Fore.RED + "No Control Group Selected")
                         time.sleep(1.5)
