@@ -31,6 +31,6 @@ The PyPWR_MCR.py file is my attempt to upgrade the original PyPWR file into a GU
     - Reactor pressure
   - Switchboard
     - Feed water Pumps 1/2 
-    - 
   - electronic breaker board
   - control rod selection board
+  - emergency board
